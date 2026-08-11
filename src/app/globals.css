@@ -1,0 +1,128 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #061821;
+  --bg-elevated: #0b2a36;
+  --bg-soft: #0f3544;
+  --surface: #123d4d;
+  --ink: #f4f7f2;
+  --ink-muted: #a8c0c8;
+  --duck: #f5c518;
+  --duck-deep: #e0a800;
+  --water: #1aa6c1;
+  --water-bright: #3ec9e0;
+  --coral: #ff5a45;
+  --foam: #e8f6f4;
+  --line: rgba(244, 247, 242, 0.12);
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-soft: var(--bg-soft);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-duck: var(--duck);
+  --color-duck-deep: var(--duck-deep);
+  --color-water: var(--water);
+  --color-water-bright: var(--water-bright);
+  --color-coral: var(--coral);
+  --color-foam: var(--foam);
+  --color-line: var(--line);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--duck);
+  color: var(--bg);
+}
+
+@keyframes float-duck {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.85);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes count-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+  50% {
+    text-shadow: 0 0 24px rgba(245, 197, 24, 0.45);
+  }
+}
+
+.animate-float-duck {
+  animation: float-duck 4.5s ease-in-out infinite;
+}
+
+.animate-ripple {
+  animation: ripple 2.8s ease-out infinite;
+}
+
+.animate-rise {
+  animation: rise-in 0.7s ease-out both;
+}
+
+.animate-count-glow {
+  animation: count-glow 2.4s ease-in-out infinite;
+}
+
+.water-mesh {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, rgba(26, 166, 193, 0.35), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 85% 10%, rgba(245, 197, 24, 0.18), transparent 50%),
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(15, 53, 68, 0.9), transparent 60%),
+    linear-gradient(165deg, #04141c 0%, #0a2f3c 45%, #061821 100%);
+}
+
+.section-pad {
+  padding-inline: clamp(1.25rem, 4vw, 4rem);
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
