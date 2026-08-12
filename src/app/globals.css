@@ -98,6 +98,15 @@ body {
   }
 }
 
+@keyframes speed-line {
+  from {
+    transform: translateX(-110%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(520%) skewX(-18deg);
+  }
+}
+
 .animate-float-duck {
   animation: float-duck 4.5s ease-in-out infinite;
 }
@@ -122,7 +131,87 @@ body {
     linear-gradient(165deg, #04141c 0%, #0a2f3c 45%, #061821 100%);
 }
 
+.hero-party {
+  background:
+    radial-gradient(circle at 80% 15%, rgba(245, 197, 24, 0.28), transparent 23%),
+    radial-gradient(circle at 12% 72%, rgba(255, 90, 69, 0.2), transparent 24%),
+    linear-gradient(145deg, #061821 0%, #0d4150 55%, #087c97 100%);
+}
+
+.hero-party::before,
+.hero-party::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  width: 12px;
+  height: 190%;
+  top: -40%;
+  background: rgba(255, 255, 255, 0.08);
+  transform: skewX(-18deg);
+  animation: speed-line 7s linear infinite;
+}
+
+.hero-party::after {
+  width: 4px;
+  animation-delay: 2.2s;
+  animation-duration: 5s;
+}
+
+.hero-title {
+  text-shadow: 7px 7px 0 rgba(0, 0, 0, 0.2);
+}
+
+.fun-button {
+  box-shadow: 0 7px 0 #9a7400, 0 14px 30px rgba(0, 0, 0, 0.25);
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.fun-button:hover {
+  background: var(--duck-deep);
+  transform: translateY(-3px) rotate(-1deg);
+  box-shadow: 0 10px 0 #9a7400, 0 18px 36px rgba(0, 0, 0, 0.3);
+}
+
+.fun-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px 0 #9a7400, 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.fun-card {
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+
+.fun-card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.fun-card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.fun-card:hover {
+  transform: translateY(-8px) rotate(0);
+  border-color: rgba(245, 197, 24, 0.55);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+}
+
+.hero-wave {
+  background:
+    radial-gradient(54px 25px at 25px 100%, var(--bg-elevated) 97%, transparent 100%)
+      0 0 / 100px 100% repeat-x;
+}
+
 .section-pad {
   padding-inline: clamp(1.25rem, 4vw, 4rem);
   padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
