@@ -103,7 +103,8 @@ export function ParticipateForm() {
       <div className="rounded-2xl border border-line bg-bg/40 p-4 text-sm text-ink-muted">
         Vas a pagar{" "}
         <strong className="text-duck">{formatARS(campaign.ticketPrice)}</strong>{" "}
-        por Mercado Pago. Al confirmarse el pago, generamos tu ticket digital.
+        por Mercado Pago. Pagás online, recibís tu ticket digital y podés
+        participar aunque no estés presente en el evento.
       </div>
 
       <button

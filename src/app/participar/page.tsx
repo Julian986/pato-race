@@ -32,8 +32,8 @@ export default async function ParticiparPage({
               Adoptá tu <span className="text-duck">pato</span>
             </h1>
             <p className="mt-4 max-w-md text-ink-muted">
-              Completá tus datos de contacto. Sirven para tu ticket y también
-              para que sponsors e organización puedan comunicarse.
+              Registrate, pagá con Mercado Pago y recibí tu ticket digital para
+              participar en Pato Race 2026.
             </p>
 
             <div className="mt-6 max-w-md rotate-[-1deg] rounded-2xl bg-duck px-5 py-4 text-bg shadow-[0_6px_0_#9a7400]">
@@ -41,8 +41,8 @@ export default async function ParticiparPage({
                 Tu aporte corre por una buena causa
               </p>
               <p className="mt-1 text-sm font-bold">
-                El 70% de cada participación se destina a organizaciones
-                beneficiarias.
+                Cuando adoptás tu pato, no solo participás de la carrera:
+                también formás parte de una acción solidaria de gran escala.
               </p>
             </div>
 

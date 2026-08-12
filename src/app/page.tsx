@@ -12,15 +12,15 @@ export const dynamic = "force-dynamic";
 const faqs = [
   {
     q: "¿Puedo participar sin ir al Dique 3?",
-    a: "Sí. Adoptás tu pato online, recibís tu ticket digital y competís a distancia. El día del evento vas a conocer qué pato te tocó.",
+    a: "Sí. Podés comprar tu participación online y ser parte de la carrera desde cualquier lugar.",
   },
   {
     q: "¿Cómo se asigna el pato?",
-    a: "48 horas antes de la carrera te avisamos tu número de ticket y el pato que te tocó al azar. Si ese pato gana, ganás.",
+    a: "48 horas antes de la carrera te informaremos qué pato quedó asignado a tu ticket.",
   },
   {
     q: "¿Cuántas personas comparten un pato?",
-    a: `Se estiman ${campaign.peoplePerDuck} personas por pato. Si ese pato gana, el premio de ${formatARS(campaign.prizePerDuck)} se reparte entre quienes lo adoptaron.`,
+    a: `Cada pato podrá representar aproximadamente a ${campaign.peoplePerDuck} personas. Si ese pato gana, el premio de ${formatARS(campaign.prizePerDuck)} se reparte entre quienes lo adoptaron.`,
   },
   {
     q: "¿A dónde va el dinero?",
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     q: "¿Qué incluye el ticket?",
-    a: `Participación en la carrera de patos, comprobante digital con número único y enlace para compartir. Valor aproximado: ${formatARS(campaign.ticketPrice)}.`,
+    a: `Tu participación en la carrera, ticket digital con número único y enlace para compartir. Valor aproximado: ${formatARS(campaign.ticketPrice)}.`,
   },
 ];
 
@@ -102,7 +102,7 @@ function Hero({ stats }: { stats: PublicStats }) {
                 href="#como"
                 className="rounded-full border border-line px-6 py-3.5 text-base text-ink transition hover:border-ink/40"
               >
-                Cómo funciona
+                Cómo participar
               </a>
             </div>
             <div id="stats" className="mt-7 max-w-xl">
@@ -161,7 +161,7 @@ function QueEs() {
     {
       value: `${campaign.races}`,
       label: "carreras de patos",
-      detail: "Dos largadas llenas de emoción en las aguas del Dique 3.",
+      detail: "Dos carreras dentro de una jornada de aproximadamente dos horas.",
     },
     {
       value: campaign.peoplePerDuck,
@@ -190,15 +190,19 @@ function QueEs() {
           </div>
           <div className="space-y-4 text-base leading-relaxed text-ink-muted md:text-lg">
             <p>
-              Miles de patitos de goma se lanzan al agua al mismo tiempo y la
-              corriente los lleva hasta la meta. Vos adoptás una participación
-              y, 48 horas antes del evento, tu ticket se vincula al azar con uno
-              de esos patos.
+              Pato Race es un evento solidario y masivo en el que miles de
+              patitos participan en una carrera sobre el agua en Puerto Madero.
             </p>
             <p>
-              Podés vivirlo en Puerto Madero o participar desde cualquier lugar.
-              Si tu pato cruza primero, ganás junto a las demás personas que lo
-              adoptaron. Diversión, suspenso y solidaridad en una misma carrera.
+              Cada persona compra una participación y recibe un número de
+              ticket. Luego, 48 horas antes de la carrera, ese ticket se
+              vincula al azar con un pato. Si ese pato gana, ganás junto a las
+              demás personas a las que les tocó ese mismo pato.
+            </p>
+            <p>
+              Es una propuesta pensada para divertir, convocar y recaudar fondos
+              para causas benéficas, permitiendo que participe gente tanto de
+              manera presencial como a distancia.
             </p>
           </div>
         </div>
@@ -239,9 +243,14 @@ function Impacto() {
             <span className="text-duck"> causas solidarias</span>
           </h2>
           <p className="mt-5 max-w-md text-ink-muted">
-            De cada aporte, 50% se destina al Hospital Garrahan, 10% a
-            Fundación Gardel y 10% a otra causa solidaria por anunciar.
+            El 70% de lo recaudado por Pato Race será destinado a causas
+            solidarias.
           </p>
+          <div className="mt-4 space-y-2 text-sm text-ink-muted">
+            <p>50% para el Hospital Garrahan</p>
+            <p>10% para Fundación Gardel</p>
+            <p>10% destinado a otra causa solidaria a definir por la organización</p>
+          </div>
           <p className="mt-4 max-w-md rounded-2xl border border-line bg-bg-elevated/70 px-4 py-3 text-sm text-ink-muted">
             El 30% restante cubre producción y costos del evento. El apoyo de
             sponsors ayuda a reducir esos costos y aumentar el impacto.
@@ -279,23 +288,23 @@ function ComoFunciona() {
   const steps = [
     {
       n: "01",
-      title: "Adoptá tu pato",
-      body: `Completá tus datos y pagá ${formatARS(campaign.ticketPrice)} con Mercado Pago.`,
+      title: "Comprá tu participación",
+      body: `Adoptás tu pato por un valor aproximado de ${formatARS(campaign.ticketPrice)} a través de Mercado Pago.`,
     },
     {
       n: "02",
       title: "Recibí tu ticket",
-      body: "Te damos un número único de participación y comprobante digital para compartir.",
+      body: "Te enviamos un comprobante digital con tu número único de participación.",
     },
     {
       n: "03",
-      title: "Te asignamos el pato",
-      body: "48 horas antes de la carrera, tu ticket se vincula al azar con un pato (ej. Juan).",
+      title: "Esperá la asignación",
+      body: "48 horas antes de la carrera, te avisamos qué pato te tocó al azar.",
     },
     {
       n: "04",
-      title: "Si gana, ganás",
-      body: `Si ese pato gana, el premio de ${formatARS(campaign.prizePerDuck)} se reparte entre quienes lo adoptaron.`,
+      title: "Seguí la carrera",
+      body: `Si tu pato resulta ganador, compartís el premio de ${formatARS(campaign.prizePerDuck)} con las demás personas asignadas a ese mismo pato.`,
     },
   ];
 
@@ -346,11 +355,15 @@ function Sponsors() {
             </h2>
           </div>
           <p className="max-w-sm text-sm text-ink-muted">
-            Según el aporte, cada sponsor recibe una cantidad de patos y
-            visibilidad en la campaña. VIP con catering y show de luces el día
-            del evento.
+            Pato Race busca sumar marcas y aliados que quieran ser parte de una
+            experiencia única, masiva y con impacto social real.
           </p>
         </div>
+        <p className="mb-8 max-w-3xl text-ink-muted">
+          El aporte de los sponsors ayuda a potenciar el evento, ampliar su
+          alcance y reducir costos de producción, permitiendo que una mayor
+          parte de la recaudación llegue a destino.
+        </p>
         <div className="grid gap-4 sm:grid-cols-3">
           {campaign.sponsors.map((s) => (
             <div
@@ -386,11 +399,11 @@ function FinalCta() {
     <section className="section-pad pt-0">
       <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-line bg-gradient-to-br from-water/30 via-bg-elevated to-duck/20 px-6 py-14 text-center md:px-12">
         <h2 className="font-[family-name:var(--font-display)] text-5xl tracking-wide md:text-6xl">
-          ¿Listo para entrar al agua?
+          Sumate a la carrera solidaria más grande del país
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-ink-muted">
-          Adoptá tu pato, compartí tu ticket y ayudá a que Pato Race sea la
-          carrera solidaria más grande del país.
+          Adoptá tu pato, compartí tu participación y ayudanos a convertir esta
+          carrera en una gran acción solidaria.
         </p>
         <Link
           href="/participar"
