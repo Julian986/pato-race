@@ -153,12 +153,6 @@ export function StatsDashboard({
             <p className="mt-1 font-[family-name:var(--font-display)] text-4xl leading-none tracking-wide">
               {progressShown}%
             </p>
-            <span
-              className="pointer-events-none absolute -bottom-1 -right-1 font-[family-name:var(--font-display)] text-4xl leading-none text-bg/20"
-              aria-hidden
-            >
-              %
-            </span>
           </div>
         </div>
       </div>

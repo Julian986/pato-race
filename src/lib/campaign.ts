@@ -7,6 +7,7 @@ export const campaign = {
   /** Fecha aproximada del evento (21–22 nov 2026) */
   eventDate: new Date("2026-11-21T15:00:00-03:00"),
   eventDateLabel: "21–22 de noviembre 2026",
+  eventTimeLabel: "15:00 a 17:00",
   ticketPrice: Number(process.env.TICKET_PRICE ?? 10_000),
   goalAmount: Number(process.env.GOAL_AMOUNT ?? 100_000_000),
   benefitPercent: 70,

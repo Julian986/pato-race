@@ -68,13 +68,21 @@ function Hero({ stats }: { stats: PublicStats }) {
       <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28 md:justify-center md:px-8 md:pb-24 md:pt-20">
         <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="animate-rise">
-            <p className="mb-6 inline-flex max-w-full flex-col gap-1 rounded-2xl border-2 border-duck bg-duck px-5 py-3 text-bg shadow-[0_6px_0_#9a7400] sm:flex-row sm:items-center sm:gap-3 sm:rounded-full sm:px-6 sm:py-3.5">
-              <span className="font-[family-name:var(--font-display)] text-xl tracking-wide sm:text-2xl">
+            <p className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl border-2 border-duck bg-duck px-4 py-2.5 text-bg shadow-[0_6px_0_#9a7400] sm:gap-x-3 sm:rounded-full sm:px-5 sm:py-3">
+              <span className="font-[family-name:var(--font-display)] text-lg tracking-wide sm:text-xl">
                 {campaign.city}
               </span>
-              <span className="hidden h-5 w-px bg-bg/30 sm:block" aria-hidden />
+              <span className="text-bg/40" aria-hidden>
+                ·
+              </span>
               <span className="text-sm font-black uppercase tracking-wide sm:text-base">
                 {campaign.eventDateLabel}
+              </span>
+              <span className="text-bg/40" aria-hidden>
+                ·
+              </span>
+              <span className="text-sm font-black uppercase tracking-wide sm:text-base">
+                {campaign.eventTimeLabel}
               </span>
             </p>
             <h1 className="hero-title font-[family-name:var(--font-display)] text-[clamp(5rem,16vw,9.5rem)] leading-[0.78] tracking-wide text-ink">
