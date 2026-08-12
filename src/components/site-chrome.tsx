@@ -1,7 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { readSession } from "@/components/profile-access";
 
 export function SiteHeader() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setLoggedIn(Boolean(readSession()));
+  }, []);
+
   return (
     <header className="absolute inset-x-0 top-0 z-20">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-5 md:px-8">
@@ -33,16 +43,19 @@ export function SiteHeader() {
           <a href="/#como" className="hover:text-ink transition">
             Cómo participar
           </a>
-          <Link href="/perfil" className="hover:text-ink transition">
-            Mi perfil
+          <Link
+            href={loggedIn ? "/perfil/cuenta" : "/perfil"}
+            className="hover:text-ink transition"
+          >
+            {loggedIn ? "Mi cuenta" : "Ingresar"}
           </Link>
         </nav>
         <div className="flex items-center gap-2 sm:gap-3">
           <Link
-            href="/perfil"
+            href={loggedIn ? "/perfil/cuenta" : "/perfil"}
             className="rounded-full border border-line px-3 py-2 text-sm font-semibold text-ink transition hover:border-ink/40 md:hidden"
           >
-            Mi perfil
+            {loggedIn ? "Cuenta" : "Ingresar"}
           </Link>
           <Link
             href="/participar"
@@ -58,7 +71,9 @@ export function SiteHeader() {
 
 export function DuckMark({ className = "h-6 w-6" }: { className?: string }) {
   return (
-    <span className={`relative inline-block overflow-hidden rounded-full ${className}`}>
+    <span
+      className={`relative inline-block overflow-hidden rounded-full ${className}`}
+    >
       <Image
         src="/foto_pato2.webp"
         alt=""

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintReceiptButton } from "@/components/print-receipt-button";
-import { ProfileRemember } from "@/components/profile-lookup-form";
+import { ProfileRemember } from "@/components/profile-access";
 import { ShareActions } from "@/components/share-actions";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { campaign, formatARS } from "@/lib/campaign";
