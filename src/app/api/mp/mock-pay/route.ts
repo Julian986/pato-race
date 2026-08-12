@@ -24,6 +24,6 @@ export async function GET(request: Request) {
   }
 
   return NextResponse.redirect(
-    `${siteUrl}/ticket/${approved.participant.id}?status=approved&mock=1`,
+    `${siteUrl}/perfil/${approved.participant.id}?status=approved&mock=1`,
   );
 }

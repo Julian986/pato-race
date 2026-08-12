@@ -274,3 +274,20 @@ body {
     animation-iteration-count: 1 !important;
   }
 }
+
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  header,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  #recibo-print {
+    break-inside: avoid;
+  }
+}

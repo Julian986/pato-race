@@ -55,9 +55,9 @@ export async function createCheckoutPreference(input: {
         ticket_code: input.ticketCode,
       },
       back_urls: {
-        success: `${siteUrl}/ticket/${input.participantId}?status=approved`,
+        success: `${siteUrl}/perfil/${input.participantId}?status=approved`,
         failure: `${siteUrl}/participar?status=failure`,
-        pending: `${siteUrl}/ticket/${input.participantId}?status=pending`,
+        pending: `${siteUrl}/perfil/${input.participantId}?status=pending`,
       },
       auto_return: "approved",
       notification_url: `${siteUrl}/api/mp/webhook`,

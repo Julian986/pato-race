@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { formatARS } from "@/lib/campaign";
 import type { PublicStats } from "@/lib/db/store";
@@ -112,21 +113,17 @@ export function StatsDashboard({
             </div>
             <div
               className="absolute top-1/2 -translate-y-1/2 transition-[left] duration-1000 ease-out"
-              style={{ left: `calc(${duckX}% - 14px)` }}
+              style={{ left: `calc(${duckX}% - 16px)` }}
               aria-hidden
             >
-              <span className="live-duck inline-block">
-                <svg viewBox="0 0 32 28" className="h-6 w-7" fill="none">
-                  <path
-                    d="M4 17c0-7 6-12 13-12 5 0 8 2 10 5 2.5.4 5 2.8 5 5.5C32 20 28 23 23 23H9C5.5 23 4 20.5 4 17Z"
-                    fill="#F5C518"
-                  />
-                  <circle cx="22" cy="11.5" r="1.6" fill="#061821" />
-                  <path
-                    d="M27 13c2.2 0 4 1 4.5 2-1.5.5-3 .4-4.5 0V13Z"
-                    fill="#FF5A45"
-                  />
-                </svg>
+              <span className="live-duck relative block h-7 w-7 overflow-hidden rounded-full border-2 border-duck shadow-[0_2px_0_rgba(0,0,0,0.35)]">
+                <Image
+                  src="/pato_corre.webp"
+                  alt=""
+                  fill
+                  sizes="28px"
+                  className="object-cover object-center"
+                />
               </span>
             </div>
           </div>

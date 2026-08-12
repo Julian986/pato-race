@@ -68,21 +68,28 @@ function Hero({ stats }: { stats: PublicStats }) {
       <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-14 pt-24 md:px-8 md:pb-20 md:pt-28">
         <div className="grid grid-cols-[1.15fr_0.85fr] items-center gap-3 sm:gap-6 md:gap-10">
           <div className="animate-rise min-w-0">
-            <p className="mb-4 inline-flex w-fit max-w-full flex-col gap-0.5 rounded-2xl border-2 border-duck bg-duck px-3 py-2 text-bg shadow-[0_5px_0_#9a7400] sm:mb-6 sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:px-4 sm:py-2.5">
-              <span className="font-[family-name:var(--font-display)] text-base tracking-wide sm:text-lg md:text-xl">
-                {campaign.city}
-              </span>
-              <span className="hidden text-bg/40 sm:inline" aria-hidden>
-                ·
-              </span>
-              <span className="text-[11px] font-black uppercase tracking-wide sm:text-sm md:text-base">
-                {campaign.eventDateLabel}
-                <span className="mx-1.5 text-bg/40" aria-hidden>
-                  ·
-                </span>
-                {campaign.eventTimeLabel}
-              </span>
-            </p>
+            <div className="date-chip mb-4 inline-flex w-fit max-w-full -rotate-1 flex-col overflow-hidden rounded-2xl border-2 border-duck bg-duck text-bg shadow-[5px_5px_0_#9a7400] sm:mb-6 sm:rotate-0 sm:flex-row sm:items-stretch">
+              <div className="px-3.5 py-2.5 sm:px-4 sm:py-3">
+                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-bg/55">
+                  Ciudad
+                </p>
+                <p className="font-[family-name:var(--font-display)] text-xl leading-none tracking-wide sm:text-2xl">
+                  {campaign.city}
+                </p>
+              </div>
+              <div className="hidden w-px self-stretch bg-bg/20 sm:block" aria-hidden />
+              <div className="border-t-2 border-bg/15 px-3.5 py-2.5 sm:border-t-0 sm:px-4 sm:py-3">
+                <p className="text-[9px] font-black uppercase tracking-[0.22em] text-bg/55">
+                  Fecha y hora
+                </p>
+                <p className="text-xs font-black uppercase leading-tight tracking-wide sm:text-sm">
+                  {campaign.eventDateLabel}
+                </p>
+                <p className="mt-0.5 text-xs font-bold uppercase tracking-wide text-bg/75 sm:text-sm">
+                  {campaign.eventTimeLabel}
+                </p>
+              </div>
+            </div>
 
             <h1 className="hero-title font-[family-name:var(--font-display)] text-[clamp(3.4rem,12vw,9.5rem)] leading-[0.78] tracking-wide text-ink">
               PATO
@@ -128,7 +135,7 @@ function Hero({ stats }: { stats: PublicStats }) {
             <div className="relative mx-auto w-full max-w-[160px] animate-float-duck sm:max-w-[260px] md:max-w-[400px]">
               <div className="relative aspect-square overflow-hidden rounded-[42%_58%_45%_55%/55%_42%_58%_45%] border-[4px] border-duck bg-[#15120d] shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:border-[5px] md:border-[6px]">
                 <Image
-                  src="/foto_pato2.png"
+                  src="/foto_pato2.webp"
                   alt="Pato corredor con casco argentino y anteojos"
                   fill
                   priority
