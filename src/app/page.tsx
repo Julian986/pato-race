@@ -65,97 +65,104 @@ function Hero({ stats }: { stats: PublicStats }) {
       <div className="pointer-events-none absolute -left-20 top-28 h-52 w-52 rounded-full bg-coral/25 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 top-20 h-72 w-72 rounded-full bg-duck/25 blur-3xl" />
 
-      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28 md:justify-center md:px-8 md:pb-24 md:pt-20">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="animate-rise">
-            <p className="mb-6 inline-flex max-w-full flex-wrap items-center gap-x-2 gap-y-1 rounded-2xl border-2 border-duck bg-duck px-4 py-2.5 text-bg shadow-[0_6px_0_#9a7400] sm:gap-x-3 sm:rounded-full sm:px-5 sm:py-3">
-              <span className="font-[family-name:var(--font-display)] text-lg tracking-wide sm:text-xl">
+      <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-5 pb-14 pt-24 md:px-8 md:pb-20 md:pt-28">
+        <div className="grid grid-cols-[1.15fr_0.85fr] items-center gap-3 sm:gap-6 md:gap-10">
+          <div className="animate-rise min-w-0">
+            <p className="mb-4 inline-flex w-fit max-w-full flex-col gap-0.5 rounded-2xl border-2 border-duck bg-duck px-3 py-2 text-bg shadow-[0_5px_0_#9a7400] sm:mb-6 sm:flex-row sm:items-center sm:gap-2 sm:rounded-full sm:px-4 sm:py-2.5">
+              <span className="font-[family-name:var(--font-display)] text-base tracking-wide sm:text-lg md:text-xl">
                 {campaign.city}
               </span>
-              <span className="text-bg/40" aria-hidden>
+              <span className="hidden text-bg/40 sm:inline" aria-hidden>
                 ·
               </span>
-              <span className="text-sm font-black uppercase tracking-wide sm:text-base">
+              <span className="text-[11px] font-black uppercase tracking-wide sm:text-sm md:text-base">
                 {campaign.eventDateLabel}
-              </span>
-              <span className="text-bg/40" aria-hidden>
-                ·
-              </span>
-              <span className="text-sm font-black uppercase tracking-wide sm:text-base">
+                <span className="mx-1.5 text-bg/40" aria-hidden>
+                  ·
+                </span>
                 {campaign.eventTimeLabel}
               </span>
             </p>
-            <h1 className="hero-title font-[family-name:var(--font-display)] text-[clamp(5rem,16vw,9.5rem)] leading-[0.78] tracking-wide text-ink">
+
+            <h1 className="hero-title font-[family-name:var(--font-display)] text-[clamp(3.4rem,12vw,9.5rem)] leading-[0.78] tracking-wide text-ink">
               PATO
               <br />
               <span className="relative inline-block text-duck">
                 RACE
-                <span className="absolute -right-12 -top-4 rotate-12 rounded-full bg-foam px-3 py-1 font-[family-name:var(--font-body)] text-xs font-black tracking-normal text-bg [text-shadow:none] md:-right-20 md:text-sm">
+                <span className="absolute -right-10 -top-3 rotate-12 rounded-full bg-foam px-2.5 py-1 font-[family-name:var(--font-body)] text-[10px] font-black tracking-normal text-bg [text-shadow:none] sm:-right-14 sm:text-xs md:-right-20 md:text-sm">
                   ¡CUAC!
                 </span>
               </span>
             </h1>
-            <p className="mt-6 max-w-md text-lg text-ink-muted md:text-xl">
+
+            <p className="mt-4 max-w-md text-sm text-ink-muted sm:mt-6 sm:text-lg md:text-xl">
               {campaign.tagline}. {campaign.benefitPercent}% a beneficio. Adoptá
               tu pato y sumate a la carrera del Dique 3.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+
+            <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-8 sm:gap-4">
               <Link
                 href="/participar"
-                className="fun-button rounded-full bg-duck px-7 py-3.5 text-base font-black text-bg"
+                className="fun-button whitespace-nowrap rounded-full bg-duck px-5 py-3 text-sm font-black text-bg sm:px-7 sm:py-3.5 sm:text-base"
               >
-                🐥 Adoptá tu pato · {formatARS(campaign.ticketPrice)}
+                Adoptá tu pato · {formatARS(campaign.ticketPrice)}
               </Link>
               <a
                 href="#como"
-                className="rounded-full border border-line px-6 py-3.5 text-base text-ink transition hover:border-ink/40"
+                className="rounded-full border border-line px-5 py-3 text-sm text-ink transition hover:border-ink/40 sm:px-6 sm:py-3.5 sm:text-base"
               >
                 Cómo participar
               </a>
             </div>
-            <div id="stats" className="mt-7 max-w-xl">
-              <StatsDashboard initial={stats} compact />
-            </div>
           </div>
 
-          <div className="relative min-h-[500px] animate-rise" style={{ animationDelay: "120ms" }}>
-            <div className="absolute left-1/2 top-[42%] h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-duck animate-ripple" />
+          <div
+            className="relative animate-rise self-center"
+            style={{ animationDelay: "120ms" }}
+          >
+            <div className="absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 rounded-full bg-duck/80 animate-ripple sm:h-48 sm:w-48 md:h-72 md:w-72" />
             <div
-              className="absolute left-1/2 top-[42%] h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full border-4 border-water-bright/30 animate-ripple"
+              className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-water-bright/30 animate-ripple sm:h-64 sm:w-64 sm:border-4 md:h-96 md:w-96"
               style={{ animationDelay: "1s" }}
             />
-            <div className="absolute left-1/2 top-[42%] w-[min(92%,430px)] -translate-x-1/2 -translate-y-1/2 animate-float-duck">
-              <div className="relative aspect-square overflow-hidden rounded-[42%_58%_45%_55%/55%_42%_58%_45%] border-[6px] border-duck bg-[#15120d] shadow-[0_28px_70px_rgba(0,0,0,0.45)]">
+            <div className="relative mx-auto w-full max-w-[160px] animate-float-duck sm:max-w-[260px] md:max-w-[400px]">
+              <div className="relative aspect-square overflow-hidden rounded-[42%_58%_45%_55%/55%_42%_58%_45%] border-[4px] border-duck bg-[#15120d] shadow-[0_20px_50px_rgba(0,0,0,0.45)] sm:border-[5px] md:border-[6px]">
                 <Image
-                  src="/foto_pato.png"
+                  src="/foto_pato2.png"
                   alt="Pato corredor con casco argentino y anteojos"
                   fill
                   priority
-                  sizes="(max-width: 1024px) 90vw, 430px"
+                  sizes="(max-width: 640px) 45vw, (max-width: 1024px) 35vw, 400px"
                   className="object-cover"
                 />
               </div>
-              <span className="absolute -right-3 bottom-10 rotate-6 rounded-full bg-water-bright px-4 py-2 text-sm font-black text-bg shadow-xl">
+              <span className="absolute -right-1 bottom-4 rotate-6 rounded-full bg-water-bright px-2 py-1 text-[9px] font-black text-bg shadow-xl sm:-right-3 sm:bottom-8 sm:px-3 sm:py-1.5 sm:text-xs md:bottom-10 md:px-4 md:py-2 md:text-sm">
                 70% SOLIDARIO
               </span>
             </div>
+          </div>
+        </div>
 
-            <div className="absolute inset-x-0 bottom-0 mx-auto max-w-md rotate-1 rounded-[1.75rem] border-2 border-line bg-[#13302e] p-5 text-ink shadow-[0_18px_45px_rgba(0,0,0,0.3)]">
-              <div className="mb-4 flex items-center justify-between gap-3">
-                <div>
-                  <p className="font-[family-name:var(--font-display)] text-2xl tracking-wide">
-                    {campaign.location}
-                  </p>
-                  <p className="text-xs font-semibold text-ink-muted">
-                    {campaign.races} carreras · {campaign.eventDuration}
-                  </p>
-                </div>
-                <span className="rounded-full bg-duck px-3 py-1 text-xs font-black text-bg">
-                  FALTA
-                </span>
+        <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-[0.9fr_1.1fr] md:items-stretch">
+          <div className="rotate-1 rounded-[1.5rem] border-2 border-line bg-[#13302e] p-4 text-ink shadow-[0_14px_36px_rgba(0,0,0,0.28)] sm:p-5">
+            <div className="mb-3 flex items-center justify-between gap-3">
+              <div>
+                <p className="font-[family-name:var(--font-display)] text-xl tracking-wide sm:text-2xl">
+                  {campaign.location}
+                </p>
+                <p className="text-[11px] font-semibold text-ink-muted sm:text-xs">
+                  {campaign.races} carreras · {campaign.eventDuration}
+                </p>
               </div>
-              <Countdown targetIso={campaign.eventDate.toISOString()} />
+              <span className="rounded-full bg-duck px-3 py-1 text-[10px] font-black text-bg sm:text-xs">
+                FALTA
+              </span>
             </div>
+            <Countdown targetIso={campaign.eventDate.toISOString()} />
+          </div>
+
+          <div id="stats" className="min-w-0">
+            <StatsDashboard initial={stats} compact />
           </div>
         </div>
       </div>
