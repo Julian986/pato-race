@@ -36,6 +36,16 @@ export default async function ParticiparPage({
               para que sponsors e organización puedan comunicarse.
             </p>
 
+            <div className="mt-6 max-w-md rotate-[-1deg] rounded-2xl bg-duck px-5 py-4 text-bg shadow-[0_6px_0_#9a7400]">
+              <p className="font-[family-name:var(--font-display)] text-3xl tracking-wide">
+                Tu aporte corre por una buena causa
+              </p>
+              <p className="mt-1 text-sm font-bold">
+                El 70% de cada participación se destina a organizaciones
+                beneficiarias.
+              </p>
+            </div>
+
             <ul className="mt-8 space-y-3 text-sm text-ink-muted">
               <li className="flex gap-3">
                 <DuckMark className="mt-0.5 h-5 w-5 text-duck" />

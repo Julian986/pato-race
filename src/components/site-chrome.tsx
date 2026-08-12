@@ -13,17 +13,17 @@ export function SiteHeader() {
           </span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-ink-muted md:flex">
-          <a href="/#impacto" className="hover:text-ink transition">
-            Impacto
+          <a href="/#que-es" className="hover:text-ink transition">
+            Qué es
+          </a>
+          <a href="/#sponsors" className="hover:text-ink transition">
+            Sponsors
+          </a>
+          <a href="/#beneficio" className="hover:text-ink transition">
+            Beneficio
           </a>
           <a href="/#como" className="hover:text-ink transition">
-            Cómo funciona
-          </a>
-          <a href="/#stats" className="hover:text-ink transition">
-            Recaudación
-          </a>
-          <a href="/#faq" className="hover:text-ink transition">
-            FAQ
+            Cómo participar
           </a>
         </nav>
         <Link

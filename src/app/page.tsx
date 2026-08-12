@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Countdown } from "@/components/countdown";
+import { FaqAccordion } from "@/components/faq-accordion";
 import { DuckMark, SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { StatsDashboard } from "@/components/stats-dashboard";
 import { campaign, formatARS } from "@/lib/campaign";
-import { getPublicStats } from "@/lib/db/store";
+import { getPublicStats, type PublicStats } from "@/lib/db/store";
 
 export const dynamic = "force-dynamic";
 
@@ -23,7 +24,7 @@ const faqs = [
   },
   {
     q: "¿A dónde va el dinero?",
-    a: "El 70% de lo recaudado va a beneficio. El Hospital Garrahan concentra la mayor parte; también participa la Fundación Gardel. Los costos del evento dependen en parte de los sponsors.",
+    a: "El 70% de lo recaudado va a beneficio: 50% al Hospital Garrahan, 10% a Fundación Gardel y 10% a otra causa solidaria que será anunciada por la organización. El 30% restante cubre producción y costos del evento, que se reducen con el apoyo de sponsors.",
   },
   {
     q: "¿Qué incluye el ticket?",
@@ -38,15 +39,11 @@ export default async function Home() {
     <>
       <SiteHeader />
       <main>
-        <Hero />
+        <Hero stats={stats} />
+        <QueEs />
+        <Sponsors />
         <Impacto />
         <ComoFunciona />
-        <section id="stats" className="section-pad">
-          <div className="mx-auto max-w-6xl">
-            <StatsDashboard initial={stats} />
-          </div>
-        </section>
-        <Sponsors />
         <Faq />
         <FinalCta />
       </main>
@@ -55,7 +52,7 @@ export default async function Home() {
   );
 }
 
-function Hero() {
+function Hero({ stats }: { stats: PublicStats }) {
   return (
     <section className="relative min-h-[100svh] overflow-hidden hero-party">
       <div
@@ -108,6 +105,9 @@ function Hero() {
                 Cómo funciona
               </a>
             </div>
+            <div id="stats" className="mt-7 max-w-xl">
+              <StatsDashboard initial={stats} compact />
+            </div>
           </div>
 
           <div className="relative min-h-[500px] animate-rise" style={{ animationDelay: "120ms" }}>
@@ -156,9 +156,79 @@ function Hero() {
   );
 }
 
+function QueEs() {
+  const highlights = [
+    {
+      value: `${campaign.races}`,
+      label: "carreras de patos",
+      detail: "Dos largadas llenas de emoción en las aguas del Dique 3.",
+    },
+    {
+      value: campaign.peoplePerDuck,
+      label: "personas por pato",
+      detail: "Cada pato puede ser compartido por un grupo de participantes.",
+    },
+    {
+      value: formatARS(campaign.prizePerDuck),
+      label: "de premio",
+      detail: "Si tu pato gana, el premio se reparte entre quienes lo adoptaron.",
+    },
+  ];
+
+  return (
+    <section id="que-es" className="section-pad border-t border-line bg-bg-elevated">
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:items-end">
+          <div>
+            <p className="text-xs font-black uppercase tracking-[0.25em] text-water-bright">
+              ¿Qué es Pato Race?
+            </p>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-5xl tracking-wide md:text-7xl">
+              Una carrera donde tu pato{" "}
+              <span className="text-duck">corre por vos</span>
+            </h2>
+          </div>
+          <div className="space-y-4 text-base leading-relaxed text-ink-muted md:text-lg">
+            <p>
+              Miles de patitos de goma se lanzan al agua al mismo tiempo y la
+              corriente los lleva hasta la meta. Vos adoptás una participación
+              y, 48 horas antes del evento, tu ticket se vincula al azar con uno
+              de esos patos.
+            </p>
+            <p>
+              Podés vivirlo en Puerto Madero o participar desde cualquier lugar.
+              Si tu pato cruza primero, ganás junto a las demás personas que lo
+              adoptaron. Diversión, suspenso y solidaridad en una misma carrera.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {highlights.map((item) => (
+            <article
+              key={item.label}
+              className="fun-card rounded-3xl border border-line bg-bg/45 p-6"
+            >
+              <p className="font-[family-name:var(--font-display)] text-4xl tracking-wide text-duck">
+                {item.value}
+              </p>
+              <h3 className="mt-1 text-sm font-black uppercase tracking-[0.14em]">
+                {item.label}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                {item.detail}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Impacto() {
   return (
-    <section id="impacto" className="section-pad border-t border-line bg-bg-elevated">
+    <section id="beneficio" className="section-pad border-t border-line bg-bg-elevated">
       <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
         <div>
           <p className="text-xs uppercase tracking-[0.25em] text-water-bright">
@@ -169,11 +239,15 @@ function Impacto() {
             <span className="text-duck"> causas solidarias</span>
           </h2>
           <p className="mt-5 max-w-md text-ink-muted">
-            Buscamos una recaudación grande para el Garrahan y aliados. Un
-            evento divertido, masivo y con impacto real en Puerto Madero.
+            De cada aporte, 50% se destina al Hospital Garrahan, 10% a
+            Fundación Gardel y 10% a otra causa solidaria por anunciar.
+          </p>
+          <p className="mt-4 max-w-md rounded-2xl border border-line bg-bg-elevated/70 px-4 py-3 text-sm text-ink-muted">
+            El 30% restante cubre producción y costos del evento. El apoyo de
+            sponsors ayuda a reducir esos costos y aumentar el impacto.
           </p>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-3">
           {campaign.beneficiaries.map((b) => (
             <article
               key={b.name}
@@ -186,7 +260,7 @@ function Impacto() {
               <p className="mt-2 text-sm text-ink-muted">{b.description}</p>
             </article>
           ))}
-          <article className="fun-card rounded-3xl border border-line bg-gradient-to-br from-water/20 to-duck/10 p-6 sm:col-span-2">
+          <article className="fun-card rounded-3xl border border-line bg-gradient-to-br from-water/20 to-duck/10 p-6 sm:col-span-3">
             <h3 className="font-[family-name:var(--font-display)] text-3xl tracking-wide">
               Meta ambiciosa
             </h3>
@@ -260,7 +334,7 @@ function ComoFunciona() {
 
 function Sponsors() {
   return (
-    <section id="sponsors" className="section-pad border-y border-line bg-bg-elevated">
+    <section id="sponsors" className="section-pad border-y border-line bg-bg">
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <div>
@@ -301,21 +375,7 @@ function Faq() {
         <h2 className="font-[family-name:var(--font-display)] text-5xl tracking-wide">
           Preguntas frecuentes
         </h2>
-        <div className="mt-8 divide-y divide-line border-y border-line">
-          {faqs.map((item) => (
-            <details key={item.q} className="group py-5">
-              <summary className="cursor-pointer list-none text-lg font-semibold marker:content-none">
-                <span className="flex items-center justify-between gap-4">
-                  {item.q}
-                  <span className="text-duck transition group-open:rotate-45">
-                    +
-                  </span>
-                </span>
-              </summary>
-              <p className="mt-3 text-ink-muted">{item.a}</p>
-            </details>
-          ))}
-        </div>
+        <FaqAccordion items={faqs} />
       </div>
     </section>
   );

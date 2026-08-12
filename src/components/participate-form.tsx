@@ -90,6 +90,16 @@ export function ParticipateForm() {
         </p>
       ) : null}
 
+      <div className="rounded-2xl border-2 border-duck/60 bg-duck/10 p-4">
+        <p className="font-[family-name:var(--font-display)] text-2xl tracking-wide text-duck">
+          70% de tu aporte va a beneficio
+        </p>
+        <p className="mt-1 text-sm leading-relaxed text-ink-muted">
+          50% al Hospital Garrahan, 10% a Fundación Gardel y 10% a otra causa
+          solidaria que será anunciada por la organización.
+        </p>
+      </div>
+
       <div className="rounded-2xl border border-line bg-bg/40 p-4 text-sm text-ink-muted">
         Vas a pagar{" "}
         <strong className="text-duck">{formatARS(campaign.ticketPrice)}</strong>{" "}

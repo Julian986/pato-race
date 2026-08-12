@@ -25,6 +25,11 @@ export const campaign = {
       share: "10%",
       description: "Parte del 70% destinado a beneficio social.",
     },
+    {
+      name: "Otras causas solidarias",
+      share: "10%",
+      description: "Entidad beneficiaria a anunciar por la organización.",
+    },
   ],
   sponsors: [
     { name: "Sponsor Oro", tier: "oro" },
